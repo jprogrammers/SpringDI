@@ -6,12 +6,16 @@
 
     <context:annotation-config/>
 
+    <context:component-scan base-package="com.jprogrammers.spring.autowiring" />
+
+    <!--
+
     <bean id="finder" class="com.jprogrammers.spring.InMemoryMovieFinder" />
 
     <bean id="movieLister" class="com.jprogrammers.spring.MovieLister" >
         <constructor-arg ref="finder" />
     </bean>
-
+-->
  <!--
     Inject finder class with finderProperty
     <bean id="movieLister" class="com.jprogrammers.spring.MovieLister" >

@@ -3,6 +3,7 @@ package com.jprogrammers.spring;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -13,9 +14,9 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 /**
  * Created by alireza on 9/20/15.
  */
-/*@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:application-context.xml" })
-@TestExecutionListeners( { DependencyInjectionTestExecutionListener.class })*/
+@TestExecutionListeners( { DependencyInjectionTestExecutionListener.class })
 public class MovieFinderTest extends TestCase {
 
     public void testInjectionByConstructor() {
@@ -26,6 +27,14 @@ public class MovieFinderTest extends TestCase {
 
         assertEquals(1 , movieLister.moviesDirectedBy("Peter Jackson").size());
 
+    }
+
+    @Autowired
+    com.jprogrammers.spring.autowiring.MovieLister annotatedMovieLister;
+
+    @Test
+    public void testAnnotationBasedBeans () {
+        assertEquals(1 , annotatedMovieLister.moviesDirectedBy("Peter Jackson").size());
     }
 
 }
